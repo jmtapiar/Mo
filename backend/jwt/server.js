@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const dbConfig = require('./database/db');
+var morgan = require('morgan')
 
 // Express APIs
 const api = require('./routes/auth.routes');
@@ -26,11 +27,13 @@ mongoose.set('useCreateIndex', true);
 
 // Express settings
 const app = express();
+app.use(morgan('combined'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cors());
+
 
 // Serve static resources
 app.use('/public', express.static('public'));
