@@ -2,6 +2,9 @@ const express = require ("express");
 const bodyparser = require("body-parser");
 const cors = require("cors");
 
+var morgan = require('morgan')
+var util = require('util');
+
 
 const app = express();
 const db = require("./models");
@@ -34,12 +37,24 @@ db.sequelize.sync();
 //       name: "admin"
 //     });
 //   }
+
+ // Will give you more details than console.log
+app.use(morgan(function (tokens, req, res) {
+    return [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens.res(req, res, 'content-length'), '-',
+      tokens['response-time'](req, res), 'ms'
+    ].join(' ')
+  }))
 app.use (bodyparser.json());
 
 app.use(bodyparser.urlencoded({extended: true}));
 
 //Ruta simple
 app.get("/",(req,res)=>{
+    console.log(util.inspect(res));
     res.json({message: "Bienvenido al Auth para MO."});
 });
 require('./routes/auth.routes')(app);
