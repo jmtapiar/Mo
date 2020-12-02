@@ -54,7 +54,8 @@ app.use(bodyparser.urlencoded({extended: true}));
 
 //Ruta simple
 app.get("/",(req,res)=>{
-    console.log(util.in                                                                                                                                                                                                                                                                                          spect(res));
+    console.log(util.inspect(res));
+    console.log(util.inspect(req));
     res.json({message: "Bienvenido al Auth para MO."});
 });
 require('./routes/auth.routes')(app);
