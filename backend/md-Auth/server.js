@@ -14,52 +14,34 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-db.sequelize.sync();
-// const Role = db.role;
-// db.sequelize.sync({force: true}).then(() => {
-//     console.log('Drop and Resync Db');
-//     initial();
-//   });
-
-// function initial() {
-//     Role.create({
-//       id: 1,
-//       name: "user"
-//     });
-   
-//     Role.create({
-//       id: 2,
-//       name: "moderator"
-//     });
-   
-//     Role.create({
-//       id: 3,
-//       name: "admin"
-//     });
-//   }
-
- // Will give you more details than console.log
+//Formato peticiones
 app.use(morgan(function (tokens, req, res) {
-    return [
-      tokens.method(req, res),
-      tokens.url(req, res),
-      tokens.status(req, res),
-      tokens.res(req, res, 'content-length'), '-',
-      tokens['response-time'](req, res), 'ms'
-    ].join(' ')
-  }))
+  return [
+    tokens.method(req, res),
+    tokens.url(req, res),
+    tokens.status(req, res),
+    tokens.res(req, res, 'content-length'), '-',
+    tokens['response-time'](req, res), 'ms'
+  ].join(' ')
+}))
 app.use (bodyparser.json());
-
 app.use(bodyparser.urlencoded({extended: true}));
 
-//Ruta simple
+//Datos Base de Datos
+db.sequelize.sync();
+
+
+
+//Datos Rutas
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
+require('./routes/empresas.routes')(app);
+
 app.get("/",(req,res)=>{
     console.log(util.inspect(res));
     console.log(util.inspect(req));
     res.json({message: "Bienvenido al Auth para MO."});
 });
-require('./routes/auth.routes')(app);
-require('./routes/user.routes')(app);
 
 //seteamos el puerto de escucha
 const PORT = process.env.PORT || 8080;
