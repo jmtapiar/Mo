@@ -8,6 +8,7 @@ var util = require('util');
 
 const app = express();
 const db = require("./models");
+const { Console } = require("console");
 
 var corsOptions = {
     origin:"http://localhost:8081"
@@ -28,7 +29,14 @@ app.use (bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
 //Datos Base de Datos
-db.sequelize.sync();
+db.sequelize.sync( res =>{
+  if (res) 
+  {
+    Console.log('Conectado a la base de Datos')
+  }else{
+    Console.log('Error en la conexion a la base de datos')
+  }
+});
 
 
 
