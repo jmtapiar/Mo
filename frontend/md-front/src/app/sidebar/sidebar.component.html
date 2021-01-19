@@ -1,0 +1,23 @@
+<div class="logo">
+      <div class="logo-img">
+        <img src="./assets/img/Mo.png" />
+      </div>
+    </a>
+      MercadoOnline
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li
+        routerLinkActive="active"
+        *ngFor="let menu of menu"
+        class="{{ menu.class }} nav-item"
+      >
+        <a [routerLink]="[menu.path]">
+          <i class="tim-icons  {{ menu.icon }}"></i>
+          <p>{{ menu.title }}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  

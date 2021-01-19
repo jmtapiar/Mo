@@ -26,6 +26,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import {MatIconModule} from '@angular/material/icon';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    SidebarComponent,
+    NavbarComponent,
+    FooterComponent
    
     
   ],
