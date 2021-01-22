@@ -5,6 +5,7 @@ declare interface rutaSide {
   title: string;
   icon: string;
   class: string;
+  new: number;
 }
 
 @Component({
@@ -14,6 +15,7 @@ declare interface rutaSide {
 })
 export class SidebarComponent implements OnInit {
   menu: any[];
+  novedades:boolean;
   constructor() { }
   ngOnInit() {
     this.menu = RUTAS.filter(menu => menu);
@@ -28,46 +30,54 @@ export class SidebarComponent implements OnInit {
 
 export const RUTAS: rutaSide[] = [
   {
-    path: "/inicio",
+    path: "inicio",
     title: "Inicio",
-    icon: "icon-chart-pie-36",
-    class: ""
+    icon: "fa-home",
+    class: "",
+    new:1
   },
   {
     path: "/empresas",
     title: "Empresas",
-    icon: "icon-atom",
-    class: ""
+    icon: "fa-university",
+    class: "",
+    new:0
   },
   {
     path: "/clientes",
     title: "Clientes",
-    icon: "icon-pin",
-    class: "" },
+    icon: "fa-users",
+    class: "",
+    new:0
+ },
   {
     path: "/productos",
     title: "Productos",
-    icon: "icon-bell-55",
-    class: ""
+    icon: "fa-cubes",
+    class: "",
+    new:0
   },
 
   {
     path: "/user",
     title: "Usuarios",
-    icon: "icon-single-02",
-    class: ""
+    icon: "fa-user-circle",
+    class: "",
+    new:1
   },
   {
     path: "/Reportes",
     title: "Reportes",
-    icon: "icon-puzzle-10",
-    class: ""
+    icon: "fa-signal",
+    class: "",
+    new:1
   },
   {
     path: "/estadistica",
-    title: "estadistica",
-    icon: "icon-align-center",
-    class: ""
+    title: "Estadistica",
+    icon: "fa-sitemap",
+    class: "",
+    new:2
   }
 ];
 

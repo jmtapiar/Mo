@@ -1,23 +1,40 @@
-<div class="logo">
-      <div class="logo-img">
-        <img src="./assets/img/Mo.png" />
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="index3.html" class="brand-link">
+    <img src="assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+         style="opacity: .8">
+    <span class="brand-text font-weight-light">MercadoOnline</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
-    </a>
-      MercadoOnline
-    </a>
-  </div>
-  <div class="sidebar-wrapper">
-    <ul class="nav">
-      <li
-        routerLinkActive="active"
-        *ngFor="let menu of menu"
-        class="{{ menu.class }} nav-item"
-      >
-        <a [routerLink]="[menu.path]">
-          <i class="tim-icons  {{ menu.icon }}"></i>
+      <div class="info">
+        <a href="#" class="d-block">Jonnathan Tapia</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li routerLinkActive="active" *ngFor="let menu of menu" class="nav-item">
+        <a [routerLink]="[menu.path]" class="nav-link">
+          <i class="nav-icon fas {{menu.icon}}"></i>
           <p>{{ menu.title }}</p>
+          <span *ngIf="novedades" class="right badge badge-danger">{{menu.new}}</span>
         </a>
       </li>
-    </ul>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
   </div>
+  <!-- /.sidebar -->
+</aside>
+
   
